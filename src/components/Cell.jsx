@@ -16,7 +16,7 @@ function Cell(props) {
       setContent(unflagged);
     } else if (tileState === ""){
       setTileState("flagged");
-      setContent("🚩");
+      setContent("⛳️");
     } else if (tileState === "flagged") {
         setTileState("");
         setContent(unflagged);

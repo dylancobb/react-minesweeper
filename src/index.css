@@ -16,8 +16,8 @@ html {
   justify-content: center;
   cursor: pointer;
   background: #e0e0e0;
-  /* color: transparent; */
-  color: black;
+  color: transparent;
+  /* color: black; */
   border-radius: 0.4rem; /* Add rounded corners to the board */
 }
 
