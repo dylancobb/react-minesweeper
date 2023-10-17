@@ -1,0 +1,23 @@
+.row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tile {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #e0e0e0;
+  color: transparent;
+  border-radius: 0.1rem; /* Add rounded corners to the board */
+}
+
+.tile.revealed {
+  background: #f0f0f0;
+  color: black;
+}
