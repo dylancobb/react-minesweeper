@@ -17,6 +17,20 @@ function plantMines(data) {
   }
 }
 
+function countNeighbours(data) {
+  for (let i = 0; i < data[0].length; i++) {
+    for (let j = 0; j < data.length; j++) {
+      for (let x = i - 1; x <= i + 1; x++) {
+        for (let y = j - 1; y <= j + 1; y++) {
+          if (data[x] && data[x][y] && data[x][y].isMine) {
+            data[i][j].neighbours++;
+          }
+        }
+      }
+    }
+  }
+}
+
 // plantMines(createEmptyArray(9,9))
 
 // function plantMines (rows,cols) {
@@ -44,7 +58,7 @@ function createEmptyArray(height, width) {
         x: i,
         y: j,
         isMine: false,
-        neighbour: 0,
+        neighbours: 0,
         isRevealed: false,
         isEmpty: false,
         isFlagged: false,
@@ -74,6 +88,7 @@ function createEmptyArray(height, width) {
 function renderBoard(rows, cols) {
     const data = createEmptyArray(rows, cols);
     plantMines(data);
+    countNeighbours(data);
     
     console.log(data)
     
@@ -82,7 +97,7 @@ function renderBoard(rows, cols) {
         {data.map((row, rowIndex) => (
           <div key={`row-${rowIndex}`} id={`row-${rowIndex}`} className="row" >
             {row.map((cellData, colIndex) => (
-              <Cell key={`cell-${rowIndex}-${colIndex}`} id={`row-${rowIndex} col-${colIndex}`} data={data[rowIndex][colIndex]} />
+              <Cell key={`cell-${rowIndex}-${colIndex}`} id={`${rowIndex}-${colIndex}`} data={data[rowIndex][colIndex]} />
             ))}
           </div>
         ))}

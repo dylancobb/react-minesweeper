@@ -13,11 +13,44 @@
   justify-content: center;
   cursor: pointer;
   background: #e0e0e0;
-  color: transparent;
+  /* color: transparent; */
+  color: black;
   border-radius: 0.1rem; /* Add rounded corners to the board */
 }
 
 .tile.revealed {
   background: #f0f0f0;
   color: black;
+}
+
+.neighbours-1 {
+  color: blue;
+}
+
+.neighbours-2 {
+  color: green;
+}
+
+.neighbours-3 {
+  color: red;
+}
+
+.neighbours-4 {
+  color: navy;
+}
+
+.neighbours-5 {
+  color: maroon;
+}
+
+.neighbours-6 {
+  color: teal;
+}
+
+.neighbours-7 {
+  color: black;
+}
+
+.neighbours-8 {
+  color: slategray;
 }
