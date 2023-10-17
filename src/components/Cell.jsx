@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function Cell(props) {
   const [tileState, setTileState] = useState("");
+  // eslint-disable-next-line react/prop-types
   const unflagged = props.data.isMine ? "💣" : numberGen(props.data.neighbours);
   const [content, setContent] = useState(unflagged);
 
@@ -9,6 +10,7 @@ function Cell(props) {
     setTileState("revealed");
     setContent(unflagged);
   }
+  
   function handleRightClick(event) {
     event.preventDefault(); // Prevent the context menu from appearing
     if (tileState === "revealed") {

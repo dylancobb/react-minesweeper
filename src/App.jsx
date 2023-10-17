@@ -1,14 +1,17 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 
 import Board from "./components/Board"
-import Cell from "./components/Cell"
 
 function App() {
+  const rows = 10, cols = 10, mines = 10;
+  const [remaining, setRemaining] = useState((rows*cols)-mines)
+
   return (
     <>
       <h1>Minesweeper</h1>
-      <Board rows={10} cols={10} mines={10} />
+      <p>{remaining}</p>
+      <Board rows={rows} cols={cols} mines={mines} />
     </>
   )
 }
