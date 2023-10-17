@@ -31,23 +31,6 @@ function countNeighbours(data) {
   }
 }
 
-// plantMines(createEmptyArray(9,9))
-
-// function plantMines (rows,cols) {
-//     let mineArray = []
-
-//  while (mineArray.length < 10) {
-//     const x = Math.floor(Math.random()*rows);
-//     const y = Math.floor(Math.random()*cols);
-
-//     const newMine = `${x},${y}`;
-
-//     if (!mineArray.includes(newMine)) {
-//         mineArray.push(newMine)
-//     }
-//  }
-// }
-
 function createEmptyArray(height, width) {
   let data = [];
 
@@ -65,53 +48,40 @@ function createEmptyArray(height, width) {
       };
     }
   }
-//   console.log(data);
   return data;
 }
 
-// function renderBoard(rows, cols) {
-//   const emptyArray = createEmptyArray(rows, cols);
+function renderBoard(rows, cols, mines, remaining, setRemaining) {
+  const data = createEmptyArray(rows, cols);
+  plantMines(data, mines);
+  countNeighbours(data);
 
-//   return (
-//     <div className="board">
-//       {emptyArray.map((row, rowIndex) => (
-//         <div key={`row-${rowIndex}`} className="row">
-//           {row.map((cellData, colIndex) => (
-//             <Cell key={`cell-${rowIndex}-${colIndex}`} data={cellData} />
-//           ))}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
+  console.log(data);
 
-function renderBoard(rows, cols, mines) {
-    const data = createEmptyArray(rows, cols);
-    plantMines(data, mines);
-    countNeighbours(data);
-    
-    console.log(data)
-    
-    return (
-        <>
-        <p>Mines: {mines}</p>
+  return (
+    <>
+      <p>Mines: {mines}</p>
       <div className="board">
         {data.map((row, rowIndex) => (
-          <div key={`row-${rowIndex}`} id={`row-${rowIndex}`} className="row" >
+          <div key={`row-${rowIndex}`} id={`row-${rowIndex}`} className="row">
             {row.map((cellData, colIndex) => (
-              <Cell key={`cell-${rowIndex}-${colIndex}`} id={`${rowIndex}-${colIndex}`} data={data[rowIndex][colIndex]} />
+              <Cell
+                key={`cell-${rowIndex}-${colIndex}`}
+                id={`${rowIndex}-${colIndex}`}
+                data={data[rowIndex][colIndex]}
+                remaining={remaining}
+                setRemaining={setRemaining}
+              />
             ))}
           </div>
         ))}
       </div>
-      </>
-    );
-  }
+    </>
+  );
+}
 
-
-
-function Board({ rows, cols, mines }) {
-  return <>{renderBoard(rows, cols, mines)}</>;
+function Board({ rows, cols, mines, remaining, setRemaining }) {
+  return <>{renderBoard(rows, cols, mines, remaining, setRemaining)}</>;
 }
 
 export default Board;

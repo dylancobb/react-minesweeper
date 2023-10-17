@@ -9,6 +9,9 @@ function Cell(props) {
   function handleLeftClick() {
     setTileState("revealed");
     setContent(unflagged);
+    if (!props.data.isMine) {
+        props.setRemaining(props.remaining - 1);
+    }
   }
   
   function handleRightClick(event) {
