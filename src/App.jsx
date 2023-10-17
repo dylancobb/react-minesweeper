@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <h1>Minesweeper</h1>
-      <Board rows={9} cols={9} mines={10}>
+      <Board rows={10} cols={10} mines={99}>
       <Cell />
       <Cell />
       <Cell />

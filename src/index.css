@@ -1,7 +1,10 @@
+html {
+  background-color: rgb(157, 169, 160);
+}
 .row {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
 }
 
 .tile {
@@ -15,7 +18,7 @@
   background: #e0e0e0;
   /* color: transparent; */
   color: black;
-  border-radius: 0.1rem; /* Add rounded corners to the board */
+  border-radius: 0.4rem; /* Add rounded corners to the board */
 }
 
 .tile.revealed {

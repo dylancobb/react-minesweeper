@@ -7,12 +7,11 @@ function Cell (props) {
 // //     function update(event) {
 // // if (event === leftclick) {
 // // tileState = revealed
-// // } else if (event === riightclick) {
+// // } else if (event === rightclick) {
 // //     tileState = flagged
 // // }
 // //     }
 
-    console.log(props.data)
     return <div className='tile {tileState}' id={props.id}>{props.data.isMine ? '💣' : numberGen(props.data.neighbours)}</div>
 }
 
