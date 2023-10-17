@@ -22,7 +22,11 @@ html {
 }
 
 .tile.revealed {
-  background: #f0f0f0;
+  background: darkgrey;
+  color: black;
+}
+
+.tile.flagged {
   color: black;
 }
 
