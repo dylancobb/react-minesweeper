@@ -30,34 +30,34 @@ html {
   color: black;
 }
 
-.neighbours-1 {
+.neighbours-1.revealed {
   color: blue;
 }
 
-.neighbours-2 {
+.neighbours-2.revealed {
   color: green;
 }
 
-.neighbours-3 {
+.neighbours-3.revealed {
   color: red;
 }
 
-.neighbours-4 {
+.neighbours-4.revealed {
   color: navy;
 }
 
-.neighbours-5 {
+.neighbours-5.revealed {
   color: maroon;
 }
 
-.neighbours-6 {
+.neighbours-6.revealed {
   color: teal;
 }
 
-.neighbours-7 {
+.neighbours-7.revealed {
   color: black;
 }
 
-.neighbours-8 {
+.neighbours-8.revealed {
   color: slategray;
 }
