@@ -15,14 +15,6 @@ function plantMines(data) {
       data[x][y].isMine = true;
     }
   }
-
-  for (const col of data) {
-    for (const cell of col) {
-      console.log(cell.isMine);
-    }
-  }
-  console.log(data)
-  
 }
 
 // plantMines(createEmptyArray(9,9))
@@ -82,13 +74,15 @@ function createEmptyArray(height, width) {
 function renderBoard(rows, cols) {
     const data = createEmptyArray(rows, cols);
     plantMines(data);
-  
+    
+    console.log(data)
+    
     return (
       <div className="board">
         {data.map((row, rowIndex) => (
           <div key={`row-${rowIndex}`} id={`row-${rowIndex}`} className="row" >
             {row.map((cellData, colIndex) => (
-              <Cell key={`cell-${rowIndex}-${colIndex}`} id={`row-${rowIndex} col-${colIndex}`} data={cellData} />
+              <Cell key={`cell-${rowIndex}-${colIndex}`} id={`row-${rowIndex} col-${colIndex}`} data={data[rowIndex][colIndex]} />
             ))}
           </div>
         ))}
