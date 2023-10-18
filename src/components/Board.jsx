@@ -1,7 +1,7 @@
 // import React from 'react';
 import Cell from "./Cell";
 
-const Board = ({ data, lowerCounter }) => {
+const Board = ({ data, lowerCounter, setGameState }) => {
   return (
     <>
       <div className="board">
@@ -13,6 +13,7 @@ const Board = ({ data, lowerCounter }) => {
                 id={`${rowIndex}-${colIndex}`}
                 data={data[rowIndex][colIndex]}
                 lowerCounter={lowerCounter}
+                setGameState={setGameState}
               />
             ))}
           </div>
