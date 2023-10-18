@@ -5,7 +5,7 @@ import Board from "./components/Board"
 import createBoard from "./utilities/boardGen"
 
 const App = () => {
-  const rows = 10, cols = 10, mines = 10
+  const rows = 8, cols = 8, mines = 10
   const [remaining, setRemaining] = useState((rows * cols) - mines)
   const [data, setData] = useState(createBoard(rows, cols, mines))
   const lowerCounter = () => {
@@ -15,7 +15,7 @@ const App = () => {
   return (
     <>
       <h1>Minesweeper</h1>
-      <p>{remaining}</p>
+      <p>Remaining: {remaining}</p>
       <Board data={data} lowerCounter={lowerCounter} />
     </>
   )

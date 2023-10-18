@@ -10,7 +10,7 @@ const Cell = ({ data, id, lowerCounter }) => {
     if (tileState !== "revealed") {
       setTileState("revealed");
       setContent(unflagged);
-      lowerCounter();
+      if (!data.isMine) lowerCounter();
     }
   }
 
