@@ -17,9 +17,6 @@ const createEmptyArray = (rows, cols) => {
                 y: j,
                 isMine: false,
                 neighbours: 0,
-                isRevealed: false,
-                isEmpty: false,
-                isFlagged: false,
             };
         }
     }
