@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-const Cell = ({ data, id, lowerCounter }) => {
+
+const Cell = ({ data, id, lowerCounter, setGameState }) => {
   const [tileState, setTileState] = useState("");
   // eslint-disable-next-line react/prop-types
   const unflagged = data.isMine ? "💣" : numberGen(data.neighbours);
@@ -8,6 +9,7 @@ const Cell = ({ data, id, lowerCounter }) => {
 
   function handleLeftClick() {
     if (tileState !== "revealed") {
+      if (data.isMine) {setGameState('gameOver')}
       setTileState("revealed");
       setContent(unflagged);
       if (!data.isMine) lowerCounter();
