@@ -1,34 +1,37 @@
 import { useState } from "react";
 
-function Cell(props) {
+const Cell = ({ data, id, lowerCounter }) => {
   const [tileState, setTileState] = useState("");
   // eslint-disable-next-line react/prop-types
-  const unflagged = props.data.isMine ? "💣" : numberGen(props.data.neighbours);
+  const unflagged = data.isMine ? "💣" : numberGen(data.neighbours);
   const [content, setContent] = useState(unflagged);
 
   function handleLeftClick() {
-    setTileState("revealed");
-    setContent(unflagged);
+    if (tileState !== "revealed") {
+      setTileState("revealed");
+      setContent(unflagged);
+      lowerCounter();
+    }
   }
-  
+
   function handleRightClick(event) {
     event.preventDefault(); // Prevent the context menu from appearing
     if (tileState === "revealed") {
       setTileState("revealed");
       setContent(unflagged);
-    } else if (tileState === ""){
+    } else if (tileState === "") {
       setTileState("flagged");
       setContent("⛳️");
     } else if (tileState === "flagged") {
-        setTileState("");
-        setContent(unflagged);
+      setTileState("");
+      setContent(unflagged);
     }
   }
 
   return (
     <div
       className={`tile ${tileState}`}
-      id={props.id}
+      id={id}
       onClick={handleLeftClick}
       onContextMenu={handleRightClick}
     >
