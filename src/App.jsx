@@ -17,8 +17,9 @@ const App = () => {
   return (
     <>
       <h1>Minesweeper</h1>
-      <p>{gameState === "notOver" ?'🫣':'😵'}</p>
+      <p id='emoji'>{gameState === "notOver" ?'🫣':'😵'}</p>
       <p>Remaining: {remaining}</p>
+      <p>Mines: {mines}</p>
       <Board data={data} lowerCounter={lowerCounter} setGameState={setGameState}/>
       {gameState === "notOver" ?'':<Modal gameState={gameState} setGameState={setGameState} setData={setData} setRemaining={setRemaining}/>}
     </>
