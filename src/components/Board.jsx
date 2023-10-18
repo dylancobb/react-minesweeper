@@ -85,9 +85,14 @@ function renderBoard(rows, cols, mines, remaining, setRemaining) {
 function Board({ rows, cols, mines, remaining, setRemaining } ) {
   const [data, setData] = useState(renderBoard(rows, cols, mines, remaining, setRemaining));
 
+  function refresh() {
+setData(renderBoard(rows, cols, mines, remaining, setRemaining))
+  }
+
   return <>
   <p>Remaining: {remaining}</p>
-  {data}</>;
+  {data}
+  <button onClick={refresh}>refresh</button></>;
 }
 
 export default Board;
