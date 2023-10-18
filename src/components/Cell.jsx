@@ -6,17 +6,13 @@ function Cell(props) {
   const unflagged = props.data.isMine ? "💣" : numberGen(props.data.neighbours);
   const [content, setContent] = useState(unflagged);
 
-  // let left = (props.rows*props.cols)-props.mines
-  let left = 80
 
   function handleLeftClick() {
     
     setTileState("revealed");
     setContent(unflagged);
-    props.setRemaining(left)
-    console.log(left)
-    console.log(props.rows)
-    left = left-1
+    props.setRemaining(props.remaining-1)
+    console.log(props.remaining)
   }
   
   function handleRightClick(event) {

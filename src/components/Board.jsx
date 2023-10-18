@@ -1,5 +1,5 @@
 // import React from 'react';
-// import { useState } from 'react'
+import { useState } from 'react'
 import Cell from "./Cell";
 
 
@@ -18,6 +18,9 @@ function plantMines(data, mines) {
     }
   }
 }
+
+
+
 
 function countNeighbours(data) {
   for (let i = 0; i < data.length; i++) {
@@ -80,10 +83,11 @@ function renderBoard(rows, cols, mines, remaining, setRemaining) {
 
 
 function Board({ rows, cols, mines, remaining, setRemaining } ) {
-  
+  const [data, setData] = useState(renderBoard(rows, cols, mines, remaining, setRemaining));
+
   return <>
   <p>Remaining: {remaining}</p>
-  {renderBoard(rows, cols, mines, remaining, setRemaining)}</>;
+  {data}</>;
 }
 
 export default Board;
