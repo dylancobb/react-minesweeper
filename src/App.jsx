@@ -41,7 +41,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (remaining === 0) {
+    if (remaining === 0 && gameState !== "gameOver") {
       setGameState("win");
     }
   }, [remaining]);
@@ -49,10 +49,10 @@ const App = () => {
   return (
     <>
       <h1>Minesweeper</h1>
-      <p>{gameState === "notOver" ? "🫣" : "😵"}</p>
+      <p id='emoji'>{gameState === "notOver" || 'win' ? "🫣" : "😵"}</p>
       <p>Remaining: {remaining}</p>
 
-      <button onClick={reset}>Start Again</button><br />
+      <button id='reset' onClick={reset}>Start Again</button><br />
       <button onClick={() => mode(1)}>Easy</button>
       <button onClick={() => mode(2)}>Medium</button>
       <button onClick={() => mode(3)}>Hard</button><br />
@@ -64,15 +64,18 @@ const App = () => {
         setGameState={setGameState}
         gameCount={gameCount}
       />
-      {gameState === "notOver" ? (
-        ""
-      ) : (
+      {gameState === "gameOver" ?(
         <Modal
           gameState={gameState}
           setGameState={setGameState}
           setData={setData}
           setRemaining={setRemaining}
         />
+      ): ("")}
+      {gameState !== "win" ? (
+        ""
+      ) : (
+        <h2>Win!</h2>
       )}
       <Win gameState={gameState} />
     </>
