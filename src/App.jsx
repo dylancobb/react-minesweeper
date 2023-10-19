@@ -10,18 +10,27 @@ const App = () => {
   const rows = 8, cols = 8, mines = 10
   const [remaining, setRemaining] = useState((rows * cols) - mines)
   const [data, setData] = useState(createBoard(rows, cols, mines))
-  const lowerCounter = () => {
-    setRemaining(remaining - 1)
-  }
+  const [reset, setReset] = useState(0);
+  const lowerCounter = () => setRemaining(remaining - 1)
 
   return (
     <>
       <h1>Minesweeper</h1>
-      <p id='emoji'>{gameState === "notOver" ?'🫣':'😵'}</p>
+      <p>{gameState === "notOver" ? '🫣' : '😵'}</p>
       <p>Remaining: {remaining}</p>
-      <p>Mines: {mines}</p>
-      <Board data={data} lowerCounter={lowerCounter} setGameState={setGameState}/>
-      {gameState === "notOver" ?'':<Modal gameState={gameState} setGameState={setGameState} setData={setData} setRemaining={setRemaining}/>}
+      <Board
+        data={data}
+        setData={setData}
+        lowerCounter={lowerCounter}
+        setGameState={setGameState}
+      />
+      {gameState === "notOver" ? '' :
+        <Modal
+          gameState={gameState}
+          setGameState={setGameState}
+          setData={setData}
+          setRemaining={setRemaining}
+        />}
     </>
   )
 }
