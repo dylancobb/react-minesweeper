@@ -1,5 +1,14 @@
 html {
-  background-color: rgb(157, 169, 160);
+  background-color: #4c5f6b;
+  text-align: center;
+}
+
+#emoji {
+  font-size: 5rem;
+  margin: 0;
+}
+.board {
+  display: inline-block;
 }
 .row {
   display: flex;
