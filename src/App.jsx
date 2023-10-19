@@ -10,7 +10,11 @@ const App = () => {
   const rows = 8, cols = 8, mines = 10
   const [remaining, setRemaining] = useState((rows * cols) - mines)
   const [data, setData] = useState(createBoard(rows, cols, mines))
-  const [reset, setReset] = useState(0);
+  const reset = () => {
+    setData(createBoard(rows, cols, mines));
+    setGameState("notOver");
+    setRemaining((rows * cols) - mines)
+  }
   const lowerCounter = (x) => {
     setRemaining(remaining - x);
     console.log(`decreasing counter by ${x}`);
@@ -21,6 +25,7 @@ const App = () => {
       <h1>Minesweeper</h1>
       <p>{gameState === "notOver" ? '🫣' : '😵'}</p>
       <p>Remaining: {remaining}</p>
+      <button onClick={reset}>Start Again</button><br />
       <Board
         data={data}
         setData={setData}
