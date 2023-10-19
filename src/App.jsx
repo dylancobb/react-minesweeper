@@ -11,7 +11,10 @@ const App = () => {
   const [remaining, setRemaining] = useState((rows * cols) - mines)
   const [data, setData] = useState(createBoard(rows, cols, mines))
   const [reset, setReset] = useState(0);
-  const lowerCounter = () => setRemaining(remaining - 1)
+  const lowerCounter = (x) => {
+    setRemaining(remaining - x);
+    console.log(`decreasing counter by ${x}`);
+  };
 
   return (
     <>
