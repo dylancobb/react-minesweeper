@@ -10,10 +10,12 @@ const App = () => {
   let rows = 8, cols = 8, mines = 10
   const [remaining, setRemaining] = useState((rows * cols) - mines)
   const [data, setData] = useState(createBoard(rows, cols, mines))
+  const [gameCount, setGameCount] = useState(0);
   const reset = () => {
     setData(createBoard(rows, cols, mines));
     setGameState("notOver");
     setRemaining((rows * cols) - mines)
+    setGameCount(gameCount + 1);
   }
   const mode = (difficulty) => {
     switch (difficulty) {
@@ -50,6 +52,7 @@ const App = () => {
         setData={setData}
         lowerCounter={lowerCounter}
         setGameState={setGameState}
+        gameCount={gameCount}
       />
       {gameState === "notOver" ? '' :
         <Modal

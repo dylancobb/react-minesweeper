@@ -1,7 +1,7 @@
 // import React from 'react';
 import Cell from "./Cell";
 
-const Board = ({ data, setData, lowerCounter, setGameState }) => {
+const Board = ({ data, setData, lowerCounter, setGameState, gameCount }) => {
   return (
     <>
       <div className="board">
@@ -9,7 +9,7 @@ const Board = ({ data, setData, lowerCounter, setGameState }) => {
           <div key={`row-${rowIndex}`} id={`row-${rowIndex}`} className="row" >
             {row.map((cellData, colIndex) => (
               <Cell
-                key={`cell-${rowIndex}-${colIndex}`}
+                key={`cell-${rowIndex}-${colIndex}-${gameCount}`}
                 id={`${rowIndex}-${colIndex}`}
                 data={data}
                 setData={setData}
