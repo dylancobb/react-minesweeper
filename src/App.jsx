@@ -49,7 +49,11 @@ const App = () => {
   return (
     <>
       <h1>Minesweeper</h1>
-      <p id='emoji'>{gameState === "notOver" || 'win' ? "🫣" : "😵"}</p>
+      <p id='emoji'>
+  {gameState === "gameOver" && "😵"}
+  {gameState === "win" && "🤓"}
+  {gameState === "notOver" && "🫣"}
+</p>
       <p>Remaining: {remaining}</p>
 
       <button id='reset' onClick={reset}>Start Again</button><br />
