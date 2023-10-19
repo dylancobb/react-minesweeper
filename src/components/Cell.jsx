@@ -1,38 +1,44 @@
 import { useState } from "react";
 
 
-const Cell = ({ data, id, lowerCounter, setGameState }) => {
-  const [tileState, setTileState] = useState("");
+const Cell = ({ data, setData, id, lowerCounter, setGameState }) => {
+  const [x, y] = id.split("-");
+  const cell = data[x][y];
   // eslint-disable-next-line react/prop-types
-  const unflagged = data.isMine ? "💣" : numberGen(data.neighbours);
+  const unflagged = cell.isMine ? "💣" : numberGen(cell.neighbours);
   const [content, setContent] = useState(unflagged);
 
   function handleLeftClick() {
-    if (tileState !== "revealed") {
-      if (data.isMine) {setGameState('gameOver')}
-      setTileState("revealed");
+    if (cell.state !== "revealed") {
+      if (cell.isMine) { setGameState('gameOver') }
+      cell.state = "revealed";
       setContent(unflagged);
-      if (!data.isMine) lowerCounter();
+      if (!cell.isMine) lowerCounter();
     }
   }
 
   function handleRightClick(event) {
     event.preventDefault(); // Prevent the context menu from appearing
-    if (tileState === "revealed") {
-      setTileState("revealed");
+    if (cell.state === "revealed") {
+      state("revealed");
       setContent(unflagged);
-    } else if (tileState === "") {
-      setTileState("flagged");
+    } else if (cell.state === "") {
+      state("flagged");
       setContent("⛳️");
-    } else if (tileState === "flagged") {
-      setTileState("");
+    } else if (cell.state === "flagged") {
+      state("");
       setContent(unflagged);
     }
   }
 
+  function state(newState) {
+    cell.state = newState;
+    setData(data);
+  }
+
   return (
     <div
-      className={`tile ${tileState}`}
+      className={`tile ${cell.state}`}
       id={id}
       onClick={handleLeftClick}
       onContextMenu={handleRightClick}
