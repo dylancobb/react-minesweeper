@@ -13,11 +13,16 @@ h1 {
   margin: 0;
 }
 
+#reset {
+  background-color: rgb(77, 28, 28);
+}
+
 button {
   background-color: rgb(135, 15, 15);
   border: none;
   color: white;
   padding: 10px 20px;
+  margin: 0.2rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
