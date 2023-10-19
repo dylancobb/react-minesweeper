@@ -2,18 +2,19 @@ import { useState } from "react";
 
 
 const Cell = ({ data, setData, id, lowerCounter, setGameState }) => {
-  const [x, y] = id.split("-");
-  const cell = data[x][y];
+  const [row, column] = id.split("-");
+  const cell = data[row][column];
   // eslint-disable-next-line react/prop-types
   const unflagged = cell.isMine ? "💣" : numberGen(cell.neighbours);
   const [content, setContent] = useState(unflagged);
 
   function handleLeftClick() {
     if (cell.state !== "revealed") {
-      if (cell.isMine) { setGameState('gameOver') }
       cell.state = "revealed";
       setContent(unflagged);
-      if (!cell.isMine) lowerCounter();
+      if (cell.isMine) setGameState("gameOver");
+      if (!cell.isMine && cell.neighbours) lowerCounter(1);
+      if (!cell.neighbours) lowerCounter(revealNeighbours(row, column) + 1);
     }
   }
 
@@ -34,6 +35,26 @@ const Cell = ({ data, setData, id, lowerCounter, setGameState }) => {
   function state(newState) {
     cell.state = newState;
     setData(data);
+  }
+
+  function revealNeighbours(row, column) {
+    let count = 0;
+    for (let i = row - 1; i <= +row + 1; i++) {
+      if (i < 0) i = 0; // don't fall off boundaries
+      if (i === data[0].length) break; // don't fall off boundaries
+      for (let j = column - 1; j <= +column + 1; j++) {
+        if (j < 0) j = 0; // don't fall off boundaries
+        if (j === data.length) continue; // don't fall off boundaries
+        const tile = data[i][j];
+        if (tile && tile.state !== "revealed") {
+          tile.state = "revealed";
+          count++;
+          if (!tile.neighbours) count += revealNeighbours(i, j);
+        }
+      }
+    }
+    setData(data);
+    return count;
   }
 
   return (
